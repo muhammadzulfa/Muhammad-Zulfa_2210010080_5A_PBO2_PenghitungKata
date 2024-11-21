@@ -1,3 +1,10 @@
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -55,6 +62,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         btnSimpanTxt.setText("Simpan .txt");
+        btnSimpanTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanTxtActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Jumlah Kata:");
 
@@ -177,6 +189,25 @@ public class Main extends javax.swing.JFrame {
         int count = hitungPencarian(textarea.getText(), kataKunci);
         lblHasilPencarian.setText("Kata '" + kataKunci + "' muncul sebanyak: " + count + " kali");
     }//GEN-LAST:event_txtCariActionPerformed
+
+    private void btnSimpanTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanTxtActionPerformed
+        String text = textarea.getText();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+        String fileName = "WordCount_" + now.format(formatter) + ".txt";
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write("Teks:\n" + text + "\n\n");
+            writer.write("Jumlah Kata: " + lblJlKata.getText() + "\n");
+            writer.write("Jumlah Karakter: " + lblJlKarakter.getText() + "\n");
+            writer.write("Jumlah Kalimat: " + lblJlKalimat.getText() + "\n");
+            writer.write("Jumlah Paragraf: " + lblJlParagraf.getText() + "\n");
+            writer.write("Pencarian: " + lblHasilPencarian.getText() + "\n");
+            JOptionPane.showMessageDialog(this, "Hasil disimpan di: " + fileName);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan file: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnSimpanTxtActionPerformed
 
     /**
      * @param args the command line arguments

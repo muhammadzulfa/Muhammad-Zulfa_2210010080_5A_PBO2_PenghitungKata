@@ -1,0 +1,14 @@
+Teks:
+Halo, perkenalkan saya adalah:
+Nama: Muhammad Zulfa
+NIM: 2210010080
+Kelas: 5A Non Reguler Banjarmasin
+Mata Kuliah: Pemrograman Berbasis Objek 2
+
+Tugas ini adalah proyek membuat aplikasi penghitung kata menggunakan komponen utama: Textarea, dll.
+
+Jumlah Kata: 33
+Jumlah Karakter: 244
+Jumlah Kalimat: 1
+Jumlah Paragraf: 2
+Pencarian: Kata 'Zulfa' muncul sebanyak: 1 kali
