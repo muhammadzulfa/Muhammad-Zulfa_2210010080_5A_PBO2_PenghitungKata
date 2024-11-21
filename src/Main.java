@@ -66,6 +66,14 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Cari:");
 
+        txtCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariActionPerformed(evt);
+            }
+        });
+
+        lblHasilPencarian.setText("Hasil pencarian kata muncul disini!");
+
         textarea.setColumns(20);
         textarea.setRows(5);
         textarea.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -109,8 +117,8 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblHasilPencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(181, 181, 181)
+                                        .addComponent(lblHasilPencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
                                         .addComponent(btnHitungKata)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnSimpanTxt))
@@ -163,6 +171,12 @@ public class Main extends javax.swing.JFrame {
     private void textareaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textareaKeyPressed
         updateHasil();
     }//GEN-LAST:event_textareaKeyPressed
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+        String kataKunci = txtCari.getText();
+        int count = hitungPencarian(textarea.getText(), kataKunci);
+        lblHasilPencarian.setText("Kata '" + kataKunci + "' muncul sebanyak: " + count + " kali");
+    }//GEN-LAST:event_txtCariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,5 +244,17 @@ public class Main extends javax.swing.JFrame {
         lblJlKarakter.setText(String.valueOf(karakterCount));
         lblJlKalimat.setText(String.valueOf(kalimatCount));
         lblJlParagraf.setText(String.valueOf(paragrafCount));
+    }
+    
+      private int hitungPencarian(String text, String kataKunci) {
+        int count = 0;
+        int fromIndex = 0;
+
+        while ((fromIndex = text.indexOf(kataKunci, fromIndex)) != -1) {
+            count++;
+            fromIndex++;
+        }
+
+        return count;
     }
 }
