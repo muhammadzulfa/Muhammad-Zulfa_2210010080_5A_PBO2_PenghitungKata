@@ -68,6 +68,11 @@ public class Main extends javax.swing.JFrame {
 
         textarea.setColumns(20);
         textarea.setRows(5);
+        textarea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textareaKeyPressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(textarea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -154,6 +159,10 @@ public class Main extends javax.swing.JFrame {
     private void btnHitungKataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungKataActionPerformed
         updateHasil();
     }//GEN-LAST:event_btnHitungKataActionPerformed
+
+    private void textareaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textareaKeyPressed
+        updateHasil();
+    }//GEN-LAST:event_textareaKeyPressed
 
     /**
      * @param args the command line arguments
